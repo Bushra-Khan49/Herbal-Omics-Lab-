@@ -1,5 +1,17 @@
 'use client';
 
+/**
+ * 🔒 SECURITY MODAL (THE GATEKEEPER)
+ * ---------------------------------
+ * This component provides System Authentication for the PI Admin Panel.
+ * 
+ * FEATURES:
+ * - Real-time validation: Fetches current credentials from admin-settings.json.
+ * - Anti-Brute Force Pattern: Simulates network delay (800ms) to discourage botting.
+ * - Session Management: Sets 'isAdminAuthenticated' in sessionStorage upon success.
+ */
+
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, AlertCircle, Loader2 } from 'lucide-react';

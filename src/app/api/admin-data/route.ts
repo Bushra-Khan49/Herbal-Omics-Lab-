@@ -4,6 +4,21 @@ import { join } from 'path';
 import { existsSync } from 'fs';
 import { revalidatePath } from 'next/cache';
 
+/**
+ * 🛰️ ADMIN DATA API (THE BRAIN)
+ * ----------------------------
+ * This is a RESTful API route for persistent storage management.
+ * 
+ * WHY JSON?
+ * - No external Database-as-a-Service is required.
+ * - Files are saved directly to the /data repository.
+ * - Fast, cheap, and easily portable (local-first architecture).
+ * 
+ * OPERATIONS:
+ * - GET: Reads from data/*.json based on the 'type' query param.
+ * - POST: Overwrites or Updates a JSON file with safe write handling.
+ */
+
 const DATA_DIR = join(process.cwd(), 'data');
 
 async function readJSON(filename: string): Promise<any> {

@@ -1,5 +1,22 @@
 'use client';
 
+/**
+ * 🛠️ PI ADMIN DASHBOARD (MAIN ENTRY)
+ * ---------------------------------
+ * This is the central command center for the Herbal Omics Lab CMS.
+ * 
+ * DESIGN PATTERN:
+ * - Single Page Application (SPA) inside a Next.js route.
+ * - Tab-driven state management (activeTab) to switch between CMS modules.
+ * - Reactive data fetching: Each tab component (TeamTab, PITab, etc.) 
+ *   manages its own fetch/save cycle to ensure clean data isolation.
+ * 
+ * SECURITY:
+ * - Implements a sessionStorage 'isAuthorized' gate on mount.
+ * - Direct URL access is blocked and redirected to the homepage.
+ */
+
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import {
