@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧬 Herbal Omics Lab
 
-## Getting Started
+A modern, high-performance web platform for the **Herbal Omics Laboratory**, featuring a custom-built JSON-backed CMS, real-time data synchronization, and a secure PI Admin Dashboard.
 
-First, run the development server:
+![Herbal Omics Preview](file:///Users/bushrakhan/Desktop/Herbal%20Omics%20Lab/public/hero-crystal.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Key Features
+
+- **Custom JSON CMS**: No external database dependency (Supabase/Firebase). Data is managed via persistent flat-file JSON storage in the `/data` directory.
+- **Real-time Live Sync**: Uses a custom `useLiveData` React hook with client-side polling to ensure the public site reflects admin changes in near real-time.
+- **PI Admin Dashboard**: A comprehensive suite for managing Research Areas, Lab Sessions, Team Members (PhD Scholars/Interns), and P.I. Profile.
+- **Secure Authentication**: Protected routes using `sessionStorage` gates and persistent credential management.
+- **High-Contrast Dark Mode**: A premium, laboratory-inspired UI built with Framer Motion for smooth micro-animations.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+- **Logic**: [React 19](https://react.dev/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & Vanilla CSS Modules
+- **Development Tooling**: [Turbopack](https://nextjs.org/docs/architecture/turbopack)
+
+## 📁 Project Structure & File System
+
+The project follows a clean, modular architecture:
+
+```text
+├── data/               # Persistent JSON storage (The "Database")
+├── src/
+│   ├── app/            # Next.js App Router (Pages & API Routes)
+│   │   ├── admin/      # Secure Admin Dashboard logic
+│   │   ├── api/        # RESTful endpoints for CRUD operations
+│   │   └── layout.tsx  # Root layout with theme provision
+│   ├── components/     # Atomic React components (UI & Sectional)
+│   ├── hooks/          # Custom hooks (e.g., useLiveData for polling)
+│   └── lib/            # Utility functions and shared logic
+├── public/             # Static assets (images, icons, uploads)
+└── DEVELOPMENT_STORY.md # Detailed history of the build process
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚥 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+3. **Access Admin Panel**:
+   Click the **Lock Icon** in the navigation bar and use the credentials documented in `DEVELOPMENT_STORY.md`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📖 Learn More
+For a deep dive into the challenges faced, technical decisions made, and how we solved complex sync issues, check out the [Development Story](./DEVELOPMENT_STORY.md).
