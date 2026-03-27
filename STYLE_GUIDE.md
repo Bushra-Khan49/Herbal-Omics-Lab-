@@ -46,4 +46,4 @@ Animations should feel "mechanical" and professional, not "playful."
 - **Border Radii**: `12px` (Cards), `8px` (Buttons), `6px` (Inputs).
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
