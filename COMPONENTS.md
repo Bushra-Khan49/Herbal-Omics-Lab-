@@ -27,4 +27,4 @@ High-level structural blocks.
 - **`useLiveData`**: The custom React hook responsible for client-side polling and data hydration.
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
