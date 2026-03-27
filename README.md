@@ -8,7 +8,6 @@ A state-of-the-art, high-performance web platform for the **Herbal Omics Laborat
 
 ## 👥 The Maintainers
 - **Bushra Khan** (Project Lead & Researcher)
-- **Antigravity** (AI Technical Collaborator — Google DeepMind)
 
 ---
 
