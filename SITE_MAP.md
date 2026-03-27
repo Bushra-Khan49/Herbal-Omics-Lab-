@@ -34,4 +34,4 @@ Accessible only via the System Authentication portal.
     - **Settings**: System credential management (Admin ID / Password).
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
