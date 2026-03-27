@@ -58,7 +58,7 @@ This document provides the definitive standards for code, architecture, design, 
 ---
 
 ## 🤝 5. Collaboration & Maintenance
-- **Maintainers**: Bushra Khan & Antigravity.
+- **Maintainers**: Bushra Khan
 - **Version Control**: Use descriptive commit messages (e.g., `feat: add research category`, `fix: admin session gate`).
 - **Documentation**: Any change to the Data JSON structure must be reflected in **`docs/ARCHITECTURE.md`**.
 
