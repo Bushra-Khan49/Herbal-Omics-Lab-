@@ -37,4 +37,4 @@ This document provides a technical deep-dive into the core functionalities that 
 - **Review Center**: Private dashboard tab for viewing and managing incoming student interest.
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
