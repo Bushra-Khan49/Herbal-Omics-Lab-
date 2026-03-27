@@ -29,4 +29,4 @@ To provide a world-class, dynamic, and interactive platform for the **Herbal Omi
 - **Persistence**: File System (fs) based JSON interaction (Local-first architecture).
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
