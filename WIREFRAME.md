@@ -66,4 +66,4 @@ This document provides a descriptive and ASCII-based wireframe layout for the pr
 ```
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
