@@ -19,4 +19,4 @@ Examples of unacceptable behavior by participants include:
 - Other conduct which could reasonably be considered inappropriate in a professional setting.
 
 ---
-**Enforcement**: Maintainers (Bushra Khan & Antigravity) are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+**Enforcement**: Maintainers (Bushra Khan) are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
