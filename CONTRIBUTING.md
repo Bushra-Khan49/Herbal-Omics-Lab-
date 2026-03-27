@@ -29,4 +29,4 @@ Welcome! We are excited that you want to contribute to the Herbal Omics Lab proj
 - Respect the **Code of Conduct**.
 
 ---
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
