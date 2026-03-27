@@ -52,7 +52,7 @@ In the final phase, we transformed the repository from a working code bundle int
 ## 🚀 The Future: Scaling Herbal Genomics
 The platform is now ready to scale. Future versions (v2.0+) will focus on automated bibliography synchronization and interactive 3D laboratory equipment visualizations.
 
-**Maintainers**: Bushra Khan & Antigravity
+**Maintainers**: Bushra Khan 
 
 ---
 
