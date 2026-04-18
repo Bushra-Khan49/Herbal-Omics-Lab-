@@ -5,9 +5,15 @@ import Image from 'next/image';
 import { goalsData } from '@/data/mockData';
 import styles from './Goals.module.css';
 import { useLiveData } from '@/hooks/useLiveData';
+import { useState, useEffect } from 'react';
 
 export default function Goals() {
     const data = useLiveData('goals', goalsData);
+    const [imgTimestamp, setImgTimestamp] = useState<number | null>(null);
+
+    useEffect(() => {
+        setImgTimestamp(Date.now());
+    }, [data]);
 
     return (
         <section id="goals" className={`section ${styles.goalsSection}`}>
@@ -21,10 +27,11 @@ export default function Goals() {
                     {data.map((goal: any) => (
                         <div key={goal.id} className={styles.goalCard}>
                             <Image
-                                src={goal.image}
+                                src={imgTimestamp ? `${goal.image}?t=${imgTimestamp}` : goal.image}
                                 alt={goal.title}
                                 fill
                                 className={styles.cardImage}
+                                unoptimized
                             />
                             <div className={styles.overlay}></div>
 

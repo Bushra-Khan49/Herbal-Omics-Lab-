@@ -5,9 +5,16 @@ import Link from 'next/link';
 import { facilitiesData } from '@/data/mockData';
 import styles from './Facilities.module.css';
 import { useLiveData } from '@/hooks/useLiveData';
+import { useState, useEffect } from 'react';
 
 export default function Facilities() {
     const data = useLiveData('facilities', facilitiesData);
+    const [imgTimestamp, setImgTimestamp] = useState<number | null>(null);
+
+    // Force image refresh when data changes
+    useEffect(() => {
+        setImgTimestamp(Date.now());
+    }, [data]);
 
     return (
         <section id="facilities" className={`section ${styles.facilitiesSection}`}>
@@ -22,11 +29,12 @@ export default function Facilities() {
                         <div key={facility.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src={facility.image}
+                                    src={imgTimestamp ? `${facility.image}?t=${imgTimestamp}` : facility.image}
                                     alt={facility.title}
                                     fill
                                     className={styles.cardImage}
                                     sizes="(max-width: 768px) 100vw, 50vw"
+                                    unoptimized
                                 />
                             </div>
                             <div className={styles.cardContent}>

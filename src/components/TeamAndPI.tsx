@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { teamData } from '@/data/mockData';
 import styles from './TeamAndPI.module.css';
@@ -13,12 +13,14 @@ function getMemberKey(role: string, name?: string): string {
     return `${prefix}-${name.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
-// Circle image component
+// Circle image component — cache-busted so updated photos show instantly
 function CircleImage({ src, alt, size }: { src?: string; alt: string; size: number }) {
+    const [ts, setTs] = useState<number | null>(null);
+    useEffect(() => { if (src) setTs(Date.now()); }, [src]);
     if (!src) return <div style={{ width: size, height: size, backgroundColor: '#f1f5f9', borderRadius: '50%' }} />;
     return (
         <Image
-            src={`${src}?t=${Date.now()}`}
+            src={ts ? `${src}?t=${ts}` : src}
             alt={alt}
             width={size}
             height={size}
@@ -29,10 +31,29 @@ function CircleImage({ src, alt, size }: { src?: string; alt: string; size: numb
 }
 
 export default function TeamAndPI() {
-    // Sync PI Data, Team Lists, and Image Manifest
+    // Sync PI Data and Team Lists via useLiveData
     const pi = useLiveData('pi', teamData.pi);
     const team = useLiveData('team', teamData);
-    const teamImages = useLiveData<Record<string, string>>('team-images', {}, 5000);
+
+    // Team images are served from /api/team-images (not /api/admin-data)
+    const [teamImages, setTeamImages] = useState<Record<string, string>>({});
+    const [imgTimestamp, setImgTimestamp] = useState<number | null>(null);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const res = await fetch('/api/team-images');
+                if (res.ok) {
+                    const data = await res.json();
+                    setTeamImages(data);
+                    setImgTimestamp(Date.now());
+                }
+            } catch { /* silent */ }
+        };
+        fetchImages();
+        const interval = setInterval(fetchImages, 4000);
+        return () => clearInterval(interval);
+    }, []);
 
     const publications = pi.publications || [];
 
@@ -45,7 +66,7 @@ export default function TeamAndPI() {
                         <div className={styles.piImageWrapper}>
                             {teamImages['pi-detail'] ? (
                                 <Image
-                                    src={`${teamImages['pi-detail']}?t=${Date.now()}`}
+                                    src={imgTimestamp ? `${teamImages['pi-detail']}?t=${imgTimestamp}` : teamImages['pi-detail']}
                                     alt={pi.name}
                                     fill
                                     className={styles.piMainImage}

@@ -129,6 +129,27 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean, onClo
                             >
                                 {isSubmitting ? <Loader2 className="spinner" size={20} /> : 'Authenticate Session'}
                             </button>
+
+                            {process.env.NODE_ENV === 'development' && (
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        sessionStorage.setItem('isAdminAuthenticated', 'true');
+                                        window.location.href = '/admin';
+                                    }}
+                                    className="btn"
+                                    style={{
+                                        marginTop: '1rem',
+                                        width: '100%',
+                                        backgroundColor: '#f3f4f6',
+                                        color: '#374151',
+                                        border: '1px dashed #d1d5db',
+                                        fontSize: '0.8rem'
+                                    }}
+                                >
+                                    🛠️ Dev Mode: Quick Access
+                                </button>
+                            )}
                         </form>
 
                         <button className="login-close" onClick={onClose}>Cancel</button>

@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -23,39 +22,50 @@ export default function ResearchDetailPage({ params }: { params: { slug: string 
         <main>
             <Navigation />
 
-            <article className="section" style={{ paddingTop: '10rem', minHeight: '80vh', backgroundColor: 'var(--color-bg-white)' }}>
+            {/* Blank Shell for Research Details */}
+            <article 
+                className="section" 
+                style={{ 
+                    paddingTop: '10rem', 
+                    minHeight: '80vh', 
+                    backgroundColor: 'var(--color-bg-white)',
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}
+            >
                 <div className="container">
                     <Link href="/#research" className="btn btn-outline" style={{ display: 'inline-flex', marginBottom: '3rem', padding: '0.5rem 1rem' }}>
                         &larr; Back to Research
                     </Link>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
-                        {/* Left Content */}
-                        <div>
-                            <h1 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', marginBottom: '1.5rem', fontFamily: 'var(--font-sans)', color: 'var(--color-text-main)', fontWeight: 800, lineHeight: 1.1 }}>
-                                {researchItem.title}
-                            </h1>
-                            <p style={{ fontSize: '1.25rem', color: 'var(--color-primary)', marginBottom: '2rem', fontWeight: 600, lineHeight: 1.5 }}>
-                                {researchItem.shortDesc}
-                            </p>
-                            <div style={{ padding: '2rem', backgroundColor: 'var(--color-bg-light)', borderLeft: '4px solid var(--color-primary)', borderRadius: '0 8px 8px 0', marginBottom: '2rem' }}>
-                                <h3 style={{ marginBottom: '1rem', color: 'var(--color-text-main)' }}>Overview</h3>
-                                <p style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--color-text-muted)' }}>
-                                    {researchItem.longDesc}
-                                </p>
-                            </div>
-                        </div>
+                    <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+                        <h1 style={{ 
+                            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+                            color: 'var(--color-text-main)', 
+                            fontWeight: 800, 
+                            marginBottom: '2rem',
+                            fontFamily: 'var(--font-serif)'
+                        }}>
+                            {researchItem.title}
+                        </h1>
+                        
+                        <div style={{ 
+                            width: '60px', 
+                            height: '4px', 
+                            backgroundColor: 'var(--color-primary)', 
+                            margin: '0 auto 3rem' 
+                        }} />
 
-                        {/* Right Media */}
-                        <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 12px 32px rgba(0,0,0,0.1)' }}>
-                            <Image
-                                src={researchItem.image}
-                                alt={researchItem.title}
-                                fill
-                                style={{ objectFit: 'cover' }}
-                                priority
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
+                        {/* This area is ready for the content you want to add next */}
+                        <div style={{ 
+                            color: 'var(--color-text-muted)', 
+                            fontSize: '1.2rem',
+                            fontStyle: 'italic',
+                            padding: '4rem 2rem',
+                            border: '1px dashed var(--color-border)',
+                            borderRadius: '16px'
+                        }}>
+                            This section is currently being updated. Please check back soon for detailed insights into our {researchItem.title} initiatives.
                         </div>
                     </div>
                 </div>

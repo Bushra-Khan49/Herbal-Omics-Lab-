@@ -56,7 +56,7 @@ export default function Footer() {
                         <Link href="/privacy" className={styles.legalLink}>Privacy Policy</Link>
                         <Link href="/terms" className={styles.legalLink}>Terms of Use</Link>
                     </div>
-                    <p className={styles.copyrightText}>© {new Date().getFullYear()} Herbal Omics Lab, JNU. All rights reserved.</p>
+                    <p className={styles.copyrightText}>© Herbal Omics Lab by Abinnaya Manivannan | Developed &amp; Maintained by Bushra Khan</p>
                 </div>
             </div>
         </footer>

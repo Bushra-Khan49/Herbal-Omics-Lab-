@@ -5,9 +5,16 @@ import Link from 'next/link';
 import { researchData } from '@/data/mockData';
 import styles from './ResearchAreas.module.css';
 import { useLiveData } from '@/hooks/useLiveData';
+import { useState, useEffect } from 'react';
 
 export default function ResearchAreas() {
     const data = useLiveData('research', researchData);
+    const [imgTimestamp, setImgTimestamp] = useState<number | null>(null);
+
+    // Force image refresh when data changes
+    useEffect(() => {
+        setImgTimestamp(Date.now());
+    }, [data]);
 
     return (
         <section id="research" className={`section ${styles.researchSection}`}>
@@ -22,17 +29,18 @@ export default function ResearchAreas() {
                         <div key={area.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src={area.image}
+                                    src={imgTimestamp ? `${area.image}?t=${imgTimestamp}` : area.image}
                                     alt={area.title}
                                     fill
                                     className={styles.cardImage}
                                     sizes="(max-width: 768px) 100vw, 33vw"
+                                    unoptimized
                                 />
                             </div>
                             <div className={styles.cardContent}>
                                 <h3 className={styles.cardTitle}>{area.title}</h3>
                                 <p className={styles.cardDesc}>{area.shortDesc}</p>
-                                <Link href={`/research/${area.id}`} className={styles.learnMore}>
+                                <Link href={`/research?topic=${area.id}`} className={styles.learnMore}>
                                     Explore &rarr;
                                 </Link>
                             </div>
